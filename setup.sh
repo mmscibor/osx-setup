@@ -4,7 +4,10 @@ brew tap caskroom/cask
 
 echo "Installing system tools."
 brew install zsh
+brew install tmux
 
+echo "Installing oh-my-zsh."
+sh -c “$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 chsh -s $(which zsh)
 
 echo "Installing core tools."
