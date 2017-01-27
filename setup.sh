@@ -18,3 +18,4 @@ echo "Installing 3rd party applications."
 export HOMEBREW_CASK_OPTS="--appdir=/Applications" # This sets the default installation directory for cask installed apps.
 
 brew cask install spotify
+brew cask install iterm2
