@@ -1,8 +1,7 @@
--- Load extensions
-local grid 			= require "mjolnir.bg.grid"
-local application 	= require "mjolnir.application"
-local hotkey 		= require "mjolnir.hotkey"
-local window 		= require "mjolnir.window"
+local grid = require "hs.grid"
+
+-- Disable animations
+hs.window.animationDuration = 0
 
 -- Set up hotkey aliases
 local cmdOpt          = {                  "alt", "cmd"  }  -- scope: launcher
@@ -30,7 +29,7 @@ grid.GRIDHEIGHT = 6
 -- Set the current window to a particular location on the grid
 local gridset = function(x, y, w, h)
 	return function()
-		cur_window = window.focusedwindow()
+		cur_window = hs.window.focusedWindow()
 		grid.set(
 			cur_window,
 			{x=x, y=y, w=w, h=h},
@@ -45,21 +44,22 @@ end
 ------------------------------
 
 -- Thirds, full vertical
-hotkey.bind(cmdOptCtrl, "1", gridset(0, 0, 2, 6))
-hotkey.bind(cmdOptCtrl, "2", gridset(2, 0, 2, 6))
-hotkey.bind(cmdOptCtrl, "3", gridset(4, 0, 2, 6))
-hotkey.bind(cmdOptCtrl, "4", gridset(0, 0, 4, 6))
-hotkey.bind(cmdOptCtrl, "5", gridset(2, 0, 4, 6))
+hs.hotkey.bind(cmdOptCtrl, "1", gridset(0, 0, 2, 6))
+hs.hotkey.bind(cmdOptCtrl, "2", gridset(2, 0, 2, 6))
+hs.hotkey.bind(cmdOptCtrl, "3", gridset(4, 0, 2, 6))
+hs.hotkey.bind(cmdOptCtrl, "4", gridset(0, 0, 4, 6))
+hs.hotkey.bind(cmdOptCtrl, "5", gridset(2, 0, 4, 6))
 
 -- Halves
-hotkey.bind(cmdOptCtrl, "left", gridset(0, 0, 3, 6))
-hotkey.bind(cmdOptCtrl, "right", gridset(3, 0, 3, 6))
+hs.hotkey.bind(cmdOptCtrl, "left", gridset(0, 0, 3, 6))
+hs.hotkey.bind(cmdOptCtrl, "right", gridset(3, 0, 3, 6))
 
 -- Quarters, corners
-hotkey.bind(cmdOptCtrl, "[", gridset(0, 0, 3, 3))
-hotkey.bind(cmdOptCtrl, "]", gridset(3, 0, 3, 3))
-hotkey.bind(cmdOptCtrl, ";", gridset(0, 3, 3, 3))
-hotkey.bind(cmdOptCtrl, "'", gridset(3, 3, 3, 3))
+hs.hotkey.bind(cmdOptCtrl, "[", gridset(0, 0, 3, 3))
+hs.hotkey.bind(cmdOptCtrl, "]", gridset(3, 0, 3, 3))
+hs.hotkey.bind(cmdOptCtrl, ";", gridset(0, 3, 3, 3))
+hs.hotkey.bind(cmdOptCtrl, "'", gridset(3, 3, 3, 3))
 
 -- Maximize
-hotkey.bind(cmdOptCtrl, "up", gridset(0, 0, 6, 6))
+hs.hotkey.bind(cmdOptCtrl, "up", gridset(0, 0, 6, 6))
+
